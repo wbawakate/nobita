@@ -15,7 +15,7 @@ with VisionPipeline(modules=[FaceDetection(), EmotionEstimation()], use_oak=True
         # get result of estimation and camera preview
         out_frame = pipeline.get()
         if out_frame["FaceDetection"] :
-            # facial image by cropped by face detection 
+            # facial image by cropped by face detection
             face_cv2_frame = cv2.UMat(out_frame["FaceDetection"][0] ) 
             if out_frame["EmotionEstimation"]:
                     id_emo = np.argmax(out_frame["EmotionEstimation"][0])

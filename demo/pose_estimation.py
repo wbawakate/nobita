@@ -62,6 +62,7 @@ while True:
                 cv2.UMat(frame[0].astype(np.uint8)), (w_display, h_display)
             )
             # ランドマーク描画
+            # display landmark
             for y, x, s in zip(yx_pose[:, 0], yx_pose[:, 1], yx_pose[:, 2]):
                 if s > 0.1:
                     cv2.circle(
@@ -74,7 +75,6 @@ while True:
             cv2.imshow(f"pose ", face_cv2_frame)
         else:
             pass
-            # print(f'no result')
     if cv2.waitKey(1) == ord("q"):
         cv2.destroyAllWindows()
         break

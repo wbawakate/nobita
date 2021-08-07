@@ -1,15 +1,17 @@
 # nobota
 OAK-Dを使ったロボット開発ための非言語コミュニケーションライブラリ
 
-
-## インストール
+## 準備
+このライブラリには[OAK-D](https://store.opencv.ai/)と[depthai](https://github.com/luxonis/depthai)が動くPython環境が必要です。
+### インストール
 ```
 pip install https://github.com/wbawakate/nobita
 ```
 
 ## Quik Start
-nobitaはdepthaiの面倒な処理をラップしているので、あなたは少ない行数で顔検出と感情推定のような2段階の推論を行うことができます。  
-nobitaを使って、顔画像から感情推定を始めましょう。以下が顔検出と感情推定のコードです。
+nobitaはdepthaiの面倒な処理をラップしているので、あなたは少ない行数で顔検出と感情推定のような2段階の推論を行うことができます。   
+nobitaには大きく分けて2つの要素があります。`nobita.modules`と`nobita.VisionPipeline`です。`nobita.modules`は、顔検出や感情推論のような非言語コミュニケーションに関する典型的なタスクを扱うニューラルネットワークのモジュール群です。詳しくは、[モジュール](##モジュール)をご覧ください。nobita.VisionPipeline`は`nobita.modules`をパイプラインとしてOAK-Dにデプロイしたり、連続的に推論を行ったりします。  
+それでは、nobitaを使って顔画像から感情推定を始めましょう。以下が顔検出と感情推定のコードです。
 ```
 import cv2
 import numpy as np
@@ -18,9 +20,13 @@ from nobita.modules import FaceDetection, EmotionEstimation
 
 emotions = ["neutral", "happy", "sad", "surprise", "anger"]
 # prepare VisionPipeline of nobita
+#    pass `nobita.modules` to modules as a list
+#    if you use OAK-D, set `use_oak=True`
 with VisionPipeline(modules=[FaceDetection(), EmotionEstimation()], use_oak=True) as pipeline:
     while True:
-        # get result of estimation and camera preview
+        # get result of estimation and camera preview as dict
+        #     key of the dict is name of `nobita.modules`.
+        #     value of the dict is list of numpy.array, which is prediction values of estimation of the `nobita.module`.
         out_frame = pipeline.get()
         if out_frame["FaceDetection"] :
             # facial image by cropped by face detection 
@@ -47,7 +53,7 @@ python face_emotion.py
 なお、各デモには`--device`というオプションがあります。このオプションではビデオをキャプチャするデバイスを指定することができます。もし、あなたがOAK-Dを使う場合は-1 (default)を指定してください。それ以外のwebカメラを使うときは、OpenCVでそのデバイスを指定する場合と同じデバイスIDを指定してください。
 
 
-## モデル
+## モジュール
 | module | discription | source | blob file | 
 |-------|-------------|--------|----|
 |FaceDetection | face detection |[OpenVINO Toolkit](https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html)  |face-detection-retail-0004_openvino_2021.2_6shave.blob |
@@ -56,3 +62,8 @@ python face_emotion.py
 |AgeGender | age and gender estimation facial imases|[OpenVINO Toolkit](https://docs.openvinotoolkit.org/2019_R1/_age_gender_recognition_retail_0013_description_age_gender_recognition_retail_0013.html) | age-gender-recognition-retail-0013_openvino_2021.2_6shave.blob|
 |FaceLandmark | facial landmark detection by facial images |[OpenVINO Toolkit](https://docs.openvinotoolkit.org/2019_R1/_facial_landmarks_35_adas_0002_description_facial_landmarks_35_adas_0002.html) | facial-landmarks-35-adas-0002-shaves6.blob|
 |HeadPose | head pose estimation by facial images | [OpenVINE](https://docs.openvinotoolkit.org/2019_R1/_head_pose_estimation_adas_0001_description_head_pose_estimation_adas_0001.html)| head-pose-estimation-adas-0001-shaves4.blob |
+
+
+
+# Credit
+- WBA Future Leaders ( https://wbawakate.jp )

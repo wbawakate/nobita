@@ -17,10 +17,10 @@ class VisionPipeline:
         arg_vid_cap=0,
         preview_size: Tuple[int, int] = (300, 300),
     ) -> None:
-        """nobitaのパイプラン
+        """pipeline of nobita
 
         Args:
-            modules (List): moduleのリスト
+            modules (List): list of nobita.modules
             use_oak (bool): [description]
             arg_vid_cap (str or int)
         """
