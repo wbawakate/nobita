@@ -9,7 +9,7 @@ import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser(description="demo")
-parser.add_argument("--device", "-d", type=str, default="-1")
+parser.add_argument("--device", "-d", type=str, default="-1", help="device id: If you use OAK-D, set -1 (default).  If you use other web camera, set its device id.")
 args = parser.parse_args()
 
 

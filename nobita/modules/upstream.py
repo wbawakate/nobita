@@ -60,7 +60,8 @@ class FacePosition(Base):
         super(FacePosition, self).__init__(
             blob_path, input_size=input_size, from_oak=from_oak
         )
-        self.source_name = "CAM"
+        self.source_name: str = "CAM"
+
 
     def _get_ndarray(self, frame: np.ndarray) -> List[np.ndarray]:
         bboxes = np.array(self.queue_nn.get().getFirstLayerFp16())
@@ -93,4 +94,4 @@ class PoseEstimation(Base):
         kps = np.array(self.queue_nn.get().getLayerFp16("Identity")).reshape(
             -1, 3
         )  # 17x3
-        return kps
+        return [kps]

@@ -12,7 +12,7 @@ from nobita import nobita_vision
 from nobita.modules import PoseEstimation
 
 parser = argparse.ArgumentParser(description="demo")
-parser.add_argument("--device", "-d", type=str, default="-1")
+parser.add_argument("--device", "-d", type=str, default="-1", help="device id: If you use OAK-D, set -1 (default).  If you use other web camera, set its device id.")
 args = parser.parse_args()
 
 
@@ -51,9 +51,9 @@ h_display = 900
 while True:
     # Dict[List[np.array]]. np.arrayは画像 or ニューラルネットワークの予測確率
     out_frame = pipeline.get()
-    if isinstance(out_frame["PoseEstimation"], np.ndarray) and out_frame["CAM"]:
+    if out_frame["PoseEstimation"] and out_frame["CAM"]:
         frame = out_frame["CAM"]
-        yx_pose = out_frame["PoseEstimation"]
+        yx_pose = out_frame["PoseEstimation"][0]
         if yx_pose is not None:
             h_size = frame[0].shape[0]
             w_size = frame[0].shape[1]
