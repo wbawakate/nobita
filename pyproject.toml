@@ -4,6 +4,11 @@ version = "0.0.1"
 description = ""
 authors = ["all-in-one library for non-verbal communication of robots"]
 license = "MIT"
+packages = [
+    { include = "nobita/modules" },
+    { include = "nobita/__init__.py" },
+    { include = "nobita/nobita_vision.py" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8"
