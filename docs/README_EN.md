@@ -1,4 +1,4 @@
-# nobta
+# nobita
 A non-verbal communication library for robot development using OAK-D
 
 ## prepare
