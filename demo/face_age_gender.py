@@ -3,7 +3,7 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from nobita import nobita_vision
-from nobita.modules import AgeGender, FaceDetection
+from nobita.modules import AgeGender
 import cv2
 import numpy as np
 import argparse
