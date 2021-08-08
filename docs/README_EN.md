@@ -11,6 +11,11 @@ pip install https://github.com/wbawakate/nobita
 
 ## Quik Start
 Since Nobita wraps the tedious process of DepthAI, two-step inference such as face detection and emotion estimation can be done with few lines of code. 
+
+![fig1](images/2step_estimation_depthai.png)
+
+This figure shows the data flow when using DepthAI and OAK-D to handle multiple neural networks. First, the first neural network is used to infer the image obtained from the RGB of OAK-D. Then you need to convert the data into the input format of that second neural network. Therefore, it is necessary to transfer data between the OAK-D and the host computer many times. When using depthai without any wrappers, the amount of code to write tends to increase because all data transfer needs to be defined. With Nobita, you can more easily deploy multiple neural networks to OAK-D.
+
 There are two main elements to Nobita; `nobita.modules`and`nobita.VisionPipeline`. `nobita.modules` is a set of neural network modules that handle typical tasks related to non-verbal communication, such as face detection and emotion inference. For more information, see [Modules](## Modules). `nobita.VisionPipeline` deploys `nobita.modules` as a pipeline to OAK-D and performs continuous inference.  
 
 Now, let's start emotion estimation from face images using nobita. The following is the code for face detection and emotion estimation.
