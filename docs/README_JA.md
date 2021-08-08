@@ -10,7 +10,7 @@ pip install https://github.com/wbawakate/nobita
 
 ## Quik Start
 nobitaはdepthaiの面倒な処理をラップしているので、あなたは少ない行数で顔検出と感情推定のような2段階の推論を行うことができます。   
-nobitaには大きく分けて2つの要素があります。`nobita.modules`と`nobita.VisionPipeline`です。`nobita.modules`は、顔検出や感情推論のような非言語コミュニケーションに関する典型的なタスクを扱うニューラルネットワークのモジュール群です。詳しくは、[モジュール](##モジュール)をご覧ください。nobita.VisionPipeline`は`nobita.modules`をパイプラインとしてOAK-Dにデプロイしたり、連続的に推論を行ったりします。  
+nobitaには大きく分けて2つの要素があります。`nobita.modules`と`nobita.VisionPipeline`です。`nobita.modules`は、顔検出や感情推論のような非言語コミュニケーションに関する典型的なタスクを扱うニューラルネットワークのモジュール群です。詳しくは、[モジュール](##モジュール)をご覧ください。`nobita.VisionPipeline`は`nobita.modules`をパイプラインとしてOAK-Dにデプロイしたり、連続的に推論を行ったりします。  
 それでは、nobitaを使って顔画像から感情推定を始めましょう。以下が顔検出と感情推定のコードです。
 ```
 import cv2

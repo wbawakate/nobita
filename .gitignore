@@ -131,4 +131,5 @@ dmypy.json
 .vscode/launch.json
 *.mp4
 .vscode/settings.json
-*blob
+
+dist/
