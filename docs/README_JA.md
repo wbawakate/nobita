@@ -3,7 +3,13 @@ OAK-Dを使ったロボット開発ための非言語コミュニケーション
 
 ## 準備
 このライブラリには[OAK-D](https://store.opencv.ai/)と[depthai](https://github.com/luxonis/depthai)が動くPython環境が必要です。
-### インストール
+
+### PyPiからインストール
+```
+pip install nobita
+```
+
+### リポジトリからインストール
 ```
 pip install https://github.com/wbawakate/nobita
 ```
