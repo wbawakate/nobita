@@ -6,6 +6,12 @@ A non-verbal communication library for robot development using OAK-D
 ## Preparing
 To use this library, you need a Python environment running [OAK-D](https://store.opencv.ai/) and [DepthAI](https://github.com/luxonis/depthai).
 
+
+### Install by PyPi
+```
+pip install nobita
+```
+
 ### Install by the repository
 ```
 pip install https://github.com/wbawakate/nobita
