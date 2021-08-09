@@ -8,9 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -106,6 +104,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+myenv/
 ENV/
 env.bak/
 venv.bak/
@@ -127,3 +126,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.vscode/settings.json
+.vscode/launch.json
+*.mp4
+.vscode/settings.json
+
+dist/

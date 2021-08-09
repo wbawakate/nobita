@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "nobita"
+version = "0.0.1"
+description = ""
+authors = ["all-in-one library for non-verbal communication of robots"]
+license = "MIT"
+packages = [
+    { include = "nobita/modules" },
+    { include = "nobita/__init__.py" },
+    { include = "nobita/nobita_vision.py" },
+]
+homepage = "https://github.com/wbawakate/nobita"
+repository = "https://github.com/wbawakate/nobita"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+depthai = "^2.8.0"
+opencv-python = "^4.5.3"
+numpy = "^1.21.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+black = "^21.7b0"
+matplotlib = "^3.4.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
