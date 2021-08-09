@@ -4,7 +4,13 @@ A non-verbal communication library for robot development using OAK-D
 **Japanese readme is [here](docs/README_JA.md).**
 
 ## Preparing
-To use this library, you need a Python environment running [OAK-D](https://store.opencv.ai/) and [depthai](https://github.com/luxonis/depthai).
+To use this library, you need a Python environment running [OAK-D](https://store.opencv.ai/) and [DepthAI](https://github.com/luxonis/depthai).
+
+
+### Install by PyPi
+```
+pip install nobita
+```
 
 ### Install by the repository
 ```
@@ -14,9 +20,9 @@ pip install https://github.com/wbawakate/nobita
 ## Overview
 Since Nobita wraps the tedious process of DepthAI, two-step inference such as face detection and emotion estimation can be done with few lines of code. 
 
-![fig1](docs/images/2step_estimation_depthai.png)
+![2step_estimation_depthai](https://user-images.githubusercontent.com/32811500/128666756-a6c4ae51-92ef-4341-a64a-baf47c0955d6.png)
 
-This figure shows the data flow when using DepthAI and OAK-D to handle multiple neural networks. First, the first neural network is used to infer the image obtained from the RGB of OAK-D. Then you need to convert the data into the input format of that second neural network. Therefore, it is necessary to transfer data between the OAK-D and the host computer many times. When using depthai without any wrappers, the amount of code to write tends to increase because all data transfer needs to be defined. With Nobita, you can more easily deploy multiple neural networks to OAK-D.
+This figure shows the data flow when using DepthAI and OAK-D to handle multiple neural networks. First, the first neural network is used to infer the image obtained from the RGB of OAK-D. Then you need to convert the data into the input format of that second neural network. Therefore, it is necessary to transfer data between the OAK-D and the host computer many times. When using raw DepthAI, the amount of code to write tends to increase because all data transfer needs to be defined. With Nobita, you can more easily deploy multiple neural networks to OAK-D.
 
 There are two main elements to Nobita; `nobita.modules` and `nobita.VisionPipeline`. `nobita.modules` is a set of neural network modules that handle typical tasks related to non-verbal communication, such as face detection and emotion inference. For more information, see [Modules](##Modules). `nobita.VisionPipeline` deploys `nobita.modules` as a pipeline to OAK-D and performs continuous inference.  
 
@@ -55,13 +61,18 @@ Just pass `nobita.modules` such as `FaceDetection` and `EmotionEstimation` to `n
 
 ## Demo
 There is demo code for each module in `demo/`.
+
 Run the code as follows in the `demo/` directory.
+
 ```
 python face_emotion.py
 ```
+
 Each demo has an option `--device`. This option allows you to specify the device to capture the video. If you are using OAK-D, specify -1 (default). When using other webcams, specify the same device ID as when specifying the device in OpenCV.
 
 ## Module
+Below table is a list of `nobita.modules`.
+
 | module | discription | source | blob file | 
 |-------|-------------|--------|----|
 |FaceDetection | face detection |[OpenVINO Toolkit](https://docs.openvinotoolkit.org/2020.1/_models_intel_face_detection_retail_0004_description_face_detection_retail_0004.html)  |face-detection-retail-0004_openvino_2021.2_6shave.blob |
