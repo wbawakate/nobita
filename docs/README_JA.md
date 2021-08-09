@@ -11,7 +11,8 @@ pip install https://github.com/wbawakate/nobita
 ## 概要
 nobitaはdepthaiの面倒な処理をラップしているので、あなたは少ない行数で顔検出と感情推定のような2段階の推論を行うことができます。 
 
-![fig1](images/2step_estimation_depthai.png)
+![2step_estimation_depthai](https://user-images.githubusercontent.com/32811500/128666756-a6c4ae51-92ef-4341-a64a-baf47c0955d6.png)
+
 
  この図は、depthaiとOAK-Dを用いて複数のニューラルネットワークを扱う場合のデータの流れを表しています。OAK-DのRGBで得た画像を１つ目のニューラルネットワークで推論し、その後、その２つ目のニューラルネットワークの入力形式にデータを変換する必要があります。そのため、何度もOAK-Dとホストコンピュータとの間でデータを転送する必要があります。生のdepthaiを用いる場合は、データの転送をすべてあなたが定義しなければならず、コードの記述量が長くなってしまう傾向にあります。nobitaを使えば、もっと簡単に複数のニューラルネットワークをOAK-Dにデプロイすることができます。   
 
