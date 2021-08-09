@@ -9,6 +9,9 @@ packages = [
     { include = "nobita/__init__.py" },
     { include = "nobita/nobita_vision.py" },
 ]
+homepage = "https://github.com/wbawakate/nobita"
+repository = "https://github.com/wbawakate/nobita"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
